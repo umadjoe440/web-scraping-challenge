@@ -1,0 +1,42 @@
+Mars news site is pulling from another site to get the news.  I need to get info from here:
+
+https://mars.nasa.gov/api/v1/news_items/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest
+
+Inspected, went to network tab and XHR to find the web address that it was pulling the news feed from.
+
+	from there, you can get the json, just by using requests module and parsing out what you need:
+
+{
+"items": [
+{
+"id": 8588,
+"title": "Nine Finalists Chosen in NASA's Mars 2020 Rover Naming Contest",
+"target": "_self",
+"main_image_alt": "This illustration depicts NASA's next Mars rover, which launches in 2020.",
+"meta_author": "",
+"byline": "",
+"meta_keywords": "",
+"item_name": "",
+"updated_at": "2020-01-21T19:01:00.198Z",
+"url": "/news/8588/nine-finalists-chosen-in-nasas-mars-2020-rover-naming-contest/",
+"missions": [
+[
+180,
+"mars2020",
+"Mars 2020 Rover"
+],
+[
+175,
+"mep",
+"Mars Exploration Program"
+]
+],
+"news_type": [
+[
+165,
+"feature",
+"Feature Stories"
+]
+],
+"description": "Nine finalists have been chosen in the essay contest for K-12 students across U.S. to name NASA's next Mars rover. Now you can help by voting for your favorite. ",
+"date": "January 21, 2020",
