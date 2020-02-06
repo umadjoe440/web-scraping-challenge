@@ -33,6 +33,7 @@ def scrape_info():
     url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
     url_top = 'https://www.jpl.nasa.gov'
     browser.visit(url)
+    time.sleep(3)
     browser.click_link_by_id('full_image')
     image_html = browser.html
     image_soup = BeautifulSoup(image_html, 'lxml')
@@ -87,6 +88,7 @@ def scrape_info():
 
     #GET SCHIAPARELLI IMAGE
     hemi_browser.visit(mars_hemispheres_url)
+    time.sleep(3)
     hemi_browser.click_link_by_partial_text('Schiaparelli')
     #get the title
     hemi_html = hemi_browser.html
@@ -133,5 +135,13 @@ def scrape_info():
     # Close the browser after scraping
     hemi_browser.quit()
 
-    # Return results
+    # stuff all of the scraped data into a dictionary
+    scrape_payload = {
+        "news_title": news_title,
+        "news_desc": news_p,
+        "featured_image_url": featured_image_url
+    }
+        
     
+    # Return results
+    return scrape_payload
