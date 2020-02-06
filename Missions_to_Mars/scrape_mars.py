@@ -75,64 +75,63 @@ def scrape_info():
 
     #GET CERBERUS IMAGE
     hemi_browser.visit(mars_hemispheres_url)
+    time.sleep(3)
     hemi_browser.click_link_by_partial_text('Cerberus')
+    time.sleep(3)
     #get the title
     hemi_html = hemi_browser.html
     hemi_soup = BeautifulSoup(hemi_html, 'lxml')
     hemi_title = hemi_soup.find_all('h2', class_='title')
-    hemi_title_text = hemi_title[0].text
+    cerberus_title = hemi_title[0].text
     #get the image url
     hemi_image = hemi_soup.find_all('img', class_="wide-image")
-    hemi_img_url = mars_hemispheres_url_top + hemi_image[0]['src']
-    # create dictionary and append to list
-    hemi_dict = {"title": hemi_title_text, "img_url": hemi_img_url}
-    hemisphere_list.append(hemi_dict)
+    cerberus_img_url = mars_hemispheres_url_top + hemi_image[0]['src']
+    
 
     #GET SCHIAPARELLI IMAGE
     hemi_browser.visit(mars_hemispheres_url)
     time.sleep(3)
     hemi_browser.click_link_by_partial_text('Schiaparelli')
+    time.sleep(3)
     #get the title
     hemi_html = hemi_browser.html
     hemi_soup = BeautifulSoup(hemi_html, 'lxml')
     hemi_title = hemi_soup.find_all('h2', class_='title')
-    hemi_title_text = hemi_title[0].text
+    schiap_title = hemi_title[0].text
     #get the image url
     hemi_image = hemi_soup.find_all('img', class_="wide-image")
-    hemi_img_url = mars_hemispheres_url_top + hemi_image[0]['src']
-    # create dictionary and append to list
-    hemi_dict = {"title": hemi_title_text, "img_url": hemi_img_url}
-    hemisphere_list.append(hemi_dict)
+    schiap_img_url = mars_hemispheres_url_top + hemi_image[0]['src']
+    
 
     #GET SYRTIS IMAGE
     hemi_browser.visit(mars_hemispheres_url)
+    time.sleep(3)
     hemi_browser.click_link_by_partial_text('Syrtis Major')
+    time.sleep(3)
     #get the title
     hemi_html = hemi_browser.html
     hemi_soup = BeautifulSoup(hemi_html, 'lxml')
     hemi_title = hemi_soup.find_all('h2', class_='title')
-    hemi_title_text = hemi_title[0].text
+    syrtis_title = hemi_title[0].text
     #get the image url
     hemi_image = hemi_soup.find_all('img', class_="wide-image")
-    hemi_img_url = mars_hemispheres_url_top + hemi_image[0]['src']
-    # create dictionary and append to list
-    hemi_dict = {"title": hemi_title_text, "img_url": hemi_img_url}
-    hemisphere_list.append(hemi_dict)
+    syrtis_img_url = mars_hemispheres_url_top + hemi_image[0]['src']
+    
 
     #GET VALLES IMAGE
     hemi_browser.visit(mars_hemispheres_url)
+    time.sleep(3)
     hemi_browser.click_link_by_partial_text('Valles Marineris')
+    time.sleep(3)
     #get the title
     hemi_html = hemi_browser.html
     hemi_soup = BeautifulSoup(hemi_html, 'lxml')
     hemi_title = hemi_soup.find_all('h2', class_='title')
-    hemi_title_text = hemi_title[0].text
+    valles_title = hemi_title[0].text
     #get the image url
     hemi_image = hemi_soup.find_all('img', class_="wide-image")
-    hemi_img_url = mars_hemispheres_url_top + hemi_image[0]['src']
-    # create dictionary and append to list
-    hemi_dict = {"title": hemi_title_text, "img_url": hemi_img_url}
-    hemisphere_list.append(hemi_dict)
+    valles_img_url = mars_hemispheres_url_top + hemi_image[0]['src']
+    
 
     # Close the browser after scraping
     hemi_browser.quit()
@@ -143,7 +142,15 @@ def scrape_info():
         "news_desc": news_p,
         "featured_image_url": featured_image_url,
         "latest_weather_tweet": latest_weather_tweet,
-        "mars_facts_html_table": mars_facts_html_table
+        "mars_facts_html_table": mars_facts_html_table,
+        "cerberus_title": cerberus_title,
+        "cerberus_img_url": cerberus_img_url,
+        "schiap_title": cerberus_title,
+        "schiap_img_url": cerberus_img_url,
+        "syrtis_title": cerberus_title,
+        "syrtis_img_url": cerberus_img_url,
+        "valles_title": cerberus_title,
+        "valles_img_url": cerberus_img_url
     }
         
     
