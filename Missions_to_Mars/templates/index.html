@@ -18,8 +18,11 @@
     </div>
     
     <h2>Latest Mars News</h2>
-<!--    <h3>STFU</h3> -->
-<!--    <h3>OMFG</h3> -->
+    <h3>{{ scrape_payload.news_title }}</h3>
+    <h3>{{ scrape_payload.news_desc }}</h3>
+    <hr>
+    <h2>Featured Image</h2>
+    <h3>{{ scrape_payload.featured_image_url }}</h3>
   </div>
   </div>
 </body>

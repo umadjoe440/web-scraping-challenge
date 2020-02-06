@@ -21,7 +21,7 @@ def home():
 
     # Return template and data
     scrape_payload = scrape_info()
-    return render_template("index.html", scrape_payload)
+    return render_template("index.html", scrape_payload=scrape_payload)
 
 
 # Route that will trigger the scrape function
@@ -29,7 +29,7 @@ def home():
 def scrape():
 
     # Run the scrape function
-    #mars_data = scrape_mars.scrape_info()
+    #scrape_payload = scrape_info()
 
     # Update the Mongo database using update and upsert=True
     #mongo.db.collection.update({}, costa_data, upsert=True)

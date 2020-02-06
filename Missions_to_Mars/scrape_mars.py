@@ -35,12 +35,14 @@ def scrape_info():
     browser.visit(url)
     time.sleep(3)
     browser.click_link_by_id('full_image')
+    time.sleep(3)
     image_html = browser.html
     image_soup = BeautifulSoup(image_html, 'lxml')
 
     image_div = image_soup.find_all('div', class_='fancybox-inner')
     for image in image_div:
         img_tag = image.find('img')
+        print(img_tag)
         img_path = img_tag['src']
 
     featured_image_url = url_top + img_path
