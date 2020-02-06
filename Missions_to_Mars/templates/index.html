@@ -16,13 +16,25 @@
       <p>Why is Rocco always #STUNTIN and FRONTIN???</p>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
     </div>
-    
+
+
     <h2>Latest Mars News</h2>
     <h3>{{ scrape_payload.news_title }}</h3>
     <h3>{{ scrape_payload.news_desc }}</h3>
     <hr>
-    <h2>Featured Image</h2>
-    <h3>{{ scrape_payload.featured_image_url }}</h3>
+    <div class="row">
+      <div class="col-sm-8">
+        <h2>Featured Mars Image</h2>
+        <img class="img-responsive" src="{{ scrape_payload.featured_image_url }}" alt="Mars Featured Image">
+      </div>
+      <div class="col-sm-4">
+        <h3>Latest Mars Weather</h3>
+        <p>{{ scrape_payload.latest_weather_tweet }}</p>
+        <br>
+        <h3>Mars Facts</h3>
+        {{scrape_payload.mars_facts_html_table | safe }}
+      </div>
+    </div>
   </div>
   </div>
 </body>

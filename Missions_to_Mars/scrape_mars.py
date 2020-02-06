@@ -141,7 +141,9 @@ def scrape_info():
     scrape_payload = {
         "news_title": news_title,
         "news_desc": news_p,
-        "featured_image_url": featured_image_url
+        "featured_image_url": featured_image_url,
+        "latest_weather_tweet": latest_weather_tweet,
+        "mars_facts_html_table": mars_facts_html_table
     }
         
     
