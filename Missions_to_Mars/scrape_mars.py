@@ -5,6 +5,7 @@ import requests
 import pymongo
 import pandas as pd
 import time
+import datetime
 
 
 def scrape_info():
@@ -29,7 +30,7 @@ def scrape_info():
 
     #JPL Mars Featured Image
     executable_path = {'executable_path': 'chromedriver.exe'}
-    browser = Browser('chrome', **executable_path, headless=False)
+    browser = Browser('chrome', **executable_path, headless=True)
     url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
     url_top = 'https://www.jpl.nasa.gov'
     browser.visit(url)
@@ -70,7 +71,7 @@ def scrape_info():
     mars_hemispheres_url= 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
     mars_hemispheres_url_top = 'https://astrogeology.usgs.gov'
     hemisphere_list = []
-    hemi_browser = Browser('chrome', **executable_path, headless=False)
+    hemi_browser = Browser('chrome', **executable_path, headless=True)
 
 
     #GET CERBERUS IMAGE
@@ -135,9 +136,14 @@ def scrape_info():
 
     # Close the browser after scraping
     hemi_browser.quit()
-
+    
+    
+    ts = datetime.datetime.now().timestamp()
+    scrape_timestamp = datetime.datetime.fromtimestamp(ts).isoformat()
+    
     # stuff all of the scraped data into a dictionary
     scrape_payload = {
+        "scrape_timestamp": scrape_timestamp,
         "news_title": news_title,
         "news_desc": news_p,
         "featured_image_url": featured_image_url,
@@ -152,7 +158,12 @@ def scrape_info():
         "valles_title": cerberus_title,
         "valles_img_url": cerberus_img_url
     }
+
+    # Store the Dictionary in MongoDB
+    # Define the 'classDB' database in Mongo
+    db = client.Mars_Data_DB
+    db.mars_html_scrapes.insert_one(scrape_payload)
+    client.close()
         
-    
     # Return results
     return scrape_payload
